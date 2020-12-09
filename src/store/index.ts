@@ -1,5 +1,7 @@
-import countStore from './count';
-import doubleStore from './double';
+import countClass from './countClass';
+import countObject from './countObject';
+import doubleClassAuto from './doubleClassAuto';
+import doubleObject from './doubleObject';
 
-const store = { countStore, doubleStore };
+const store = { countClass, countObject, doubleClassAuto, doubleObject };
 export default store;

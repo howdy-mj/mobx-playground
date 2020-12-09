@@ -1,34 +1,43 @@
 import React from 'react';
 import { autorun } from 'mobx';
-import { observer } from 'mobx-react-lite';
+import { observer } from 'mobx-react';
 
 import store from './store';
 
 const App: React.FC = observer(() => {
-  const { countStore, doubleStore } = store;
+  const { countClass, countObject, doubleClassAuto } = store;
   autorun(() => {
-    if (doubleStore.double) {
-      console.log('Double' + doubleStore.double);
+    if (doubleClassAuto.double) {
+      console.log('Double' + doubleClassAuto.double);
     }
-    if (doubleStore.double === 8) {
+    if (doubleClassAuto.double === 8) {
       console.log('만약 value가 8이라면 0으로 초기화');
-      doubleStore.value = 0;
+      doubleClassAuto.value = 0;
     }
   });
 
   return (
     <div style={{ padding: '50px' }}>
-      <h1>기존 방식</h1>
-      <div>number: {countStore.number}</div>
-      <button onClick={() => countStore.increase()}>plus</button>
-      <button onClick={() => countStore.decrease()}>minus</button>
+      <div style={{ marginBottom: '50px' }}>
+        <h1>Count (Class)</h1>
+        <div>number: {countClass.number}</div>
+        <button onClick={() => countClass.increase()}>plus</button>
+        <button onClick={() => countClass.decrease()}>minus</button>
+      </div>
 
-      <br />
-      <br />
+      <div style={{ marginBottom: '50px' }}>
+        <h1>Count (Object)</h1>
+        <div>num: {countObject.num}</div>
+        <button onClick={() => countObject.increase()}>increment</button>
+      </div>
 
-      <h1>mobX 6</h1>
-      <div>double number: {doubleStore.value}</div>
-      <button onClick={() => doubleStore.increment()}>increment</button>
+      <div>
+        <h1>Computed</h1>
+        <div>double number: {doubleClassAuto.value}</div>
+        <button onClick={() => doubleClassAuto.increment()}>
+          double increment
+        </button>
+      </div>
     </div>
   );
 });

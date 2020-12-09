@@ -21,5 +21,5 @@ class Doubler {
   }
 }
 
-const doubleStore = new Doubler(1);
-export default doubleStore;
+const doubleClass = new Doubler(1);
+export default doubleClass;

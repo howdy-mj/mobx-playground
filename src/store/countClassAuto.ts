@@ -15,5 +15,5 @@ class Count {
   };
 }
 
-const countStore = new Count();
-export default countStore;
+const CountClassAuto = new Count();
+export default CountClassAuto;
